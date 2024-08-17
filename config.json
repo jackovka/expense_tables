@@ -1,0 +1,17 @@
+{
+    "logger":{
+        "logLevel": "ERROR",
+        "logFileEnable": true,
+        "logStdoutEnable": true,
+        "logFile": "./logs/out.log",
+        "maxSize": 500,
+        "maxAge": 28,
+        "maxBackups": 7,
+        "rewriteLog": true
+    },
+    "tables": {
+        "countUsers": 1,
+        "tablePath1": "./tablesDoc/август1.xlsx",
+        "tablePath2": "./tablesDoc/август2.xlsx"
+    }
+}

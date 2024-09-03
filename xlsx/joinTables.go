@@ -52,6 +52,9 @@ func (info *ProductsInfo) JoinTablesUsers() error {
 		f.SetCellValue(sheet, fmt.Sprintf("E%d", i+2), info.ProductsSum[productName])
 	}
 
+	f.SetCellValue(sheet, "G2", "Всего:")
+	f.SetCellValue(sheet, "G3", info.SumPrice)
+
 	// Сохранение файла
 	f.SetActiveSheet(index)
 	err = f.SaveAs("./tablesDoc/итог.xlsx")
@@ -84,6 +87,9 @@ func (info *ProductsInfo) JoinTablesUser() error {
 
 	f.SetCellValue(sheet, "A1", "Продукт")
 	f.SetCellValue(sheet, "B1", "Сумма трат")
+
+	f.SetCellValue(sheet, "D2", "Всего:")
+	f.SetCellValue(sheet, "D3", info.SumPrice)
 
 	for i, productName := range products {
 		f.SetCellValue(sheet, fmt.Sprintf("A%d", i+2), strings.Title(productName))

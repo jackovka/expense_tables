@@ -43,6 +43,7 @@ func (info *ProductsInfo) fillProducts(rows [][]string, userIdx int) {
 			continue
 		}
 
+		info.SumPrice += cost
 		info.ProductsSum[strings.ToLower(row[0])] += cost
 		if userIdx == 1 {
 			info.Products1[strings.ToLower(row[0])] += cost
@@ -51,5 +52,5 @@ func (info *ProductsInfo) fillProducts(rows [][]string, userIdx int) {
 		}
 	}
 
-	info.Log.Debug(fmt.Sprintf("Success fill products to user %d", userIdx))
+	info.Log.Debug(fmt.Sprintf("Success fill products for table %d", userIdx))
 }

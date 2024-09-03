@@ -60,7 +60,7 @@ func TestNewLogger(t *testing.T) {
 		{
 			name: "TestFileStdout",
 			cfg: config.Config{Logger: config.Logger{
-				LogLevel: "INFO", RewriteLog: false, LogFile: path,
+				LogLevel: "INFO", RewriteLog: false, LogPath: path,
 				LogFileEnable: true, LogStdoutEnable: true, MaxSize: 100,
 				MaxAge: 28, MaxBackups: 7,
 			}},
@@ -84,7 +84,7 @@ func TestNewLogger(t *testing.T) {
 		{
 			name: "TestFile",
 			cfg: config.Config{Logger: config.Logger{
-				LogLevel: "INFO", RewriteLog: false, LogFile: path,
+				LogLevel: "INFO", RewriteLog: false, LogPath: path,
 				LogFileEnable: true, LogStdoutEnable: false, MaxSize: 100,
 				MaxAge: 28, MaxBackups: 7,
 			}},
@@ -103,7 +103,7 @@ func TestNewLogger(t *testing.T) {
 		{
 			name: "TestStdout",
 			cfg: config.Config{Logger: config.Logger{
-				LogLevel: "INFO", RewriteLog: false, LogFile: path,
+				LogLevel: "INFO", RewriteLog: false, LogPath: path,
 				LogFileEnable: false, LogStdoutEnable: true, MaxSize: 100,
 				MaxAge: 28, MaxBackups: 7,
 			}},
@@ -117,7 +117,7 @@ func TestNewLogger(t *testing.T) {
 		{
 			name: "TestBothFalse",
 			cfg: config.Config{Logger: config.Logger{
-				LogLevel: "INFO", RewriteLog: false, LogFile: path,
+				LogLevel: "INFO", RewriteLog: false, LogPath: path,
 				LogFileEnable: false, LogStdoutEnable: false, MaxSize: 100,
 				MaxAge: 28, MaxBackups: 7,
 			}},
@@ -126,7 +126,7 @@ func TestNewLogger(t *testing.T) {
 		{
 			name: "TestRewrite/FileNotExists",
 			cfg: config.Config{Logger: config.Logger{
-				LogLevel: "INFO", RewriteLog: true, LogFile: path,
+				LogLevel: "INFO", RewriteLog: true, LogPath: path,
 				LogFileEnable: true, LogStdoutEnable: false, MaxSize: 100,
 				MaxAge: 28, MaxBackups: 7,
 			}},
@@ -145,7 +145,7 @@ func TestNewLogger(t *testing.T) {
 		{
 			name: "TestRewrite/FileExists",
 			cfg: config.Config{Logger: config.Logger{
-				LogLevel: "INFO", RewriteLog: true, LogFile: path,
+				LogLevel: "INFO", RewriteLog: true, LogPath: path,
 				LogFileEnable: true, LogStdoutEnable: false, MaxSize: 100,
 				MaxAge: 28, MaxBackups: 7,
 			}},

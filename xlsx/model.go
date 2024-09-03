@@ -12,6 +12,7 @@ type ProductsInfo struct {
 	Products1   map[string]int
 	Products2   map[string]int
 	ProductsSum map[string]int
+	SumPrice    int
 }
 
 func NewInfo(log *zap.Logger, cfg *config.Config) *ProductsInfo {

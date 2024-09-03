@@ -1,9 +1,13 @@
 package logger
 
 import (
+	"fmt"
 	"os"
+	"strings"
+	"time"
 
 	"expense_tables/config"
+
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
@@ -20,14 +24,16 @@ var logLevelSeverity = map[zapcore.Level]string{
 }
 
 func NewLogger(cfg *config.Config) *zap.Logger {
+	logFile := fmt.Sprintf("%s/%s.log", cfg.LogPath, strings.Split(time.Now().String(), " ")[0])
+	fmt.Println(logFile)
 
 	// если файл для логов необходимо переписывать
 	// и если файл существует, то он удаляется  и создаётся заново;
 	// параметр RewriteLog приравнивается false
 	if cfg.RewriteLog {
-		if _, err := os.Stat(cfg.LogFile); err == nil {
-			os.Remove(cfg.LogFile)
-			os.Create(cfg.LogFile)
+		if _, err := os.Stat(logFile); err == nil {
+			os.Remove(logFile)
+			os.Create(logFile)
 			cfg.RewriteLog = false
 		}
 	}
@@ -36,7 +42,7 @@ func NewLogger(cfg *config.Config) *zap.Logger {
 		LogLevel:        cfg.LogLevel,
 		LogFileEnable:   cfg.LogFileEnable,
 		LogStdoutEnable: cfg.LogStdoutEnable,
-		LogFile:         cfg.LogFile,
+		LogFile:         logFile,
 		MaxSize:         cfg.MaxSize,
 		MaxAge:          cfg.MaxAge,
 		MaxBackups:      cfg.MaxBackups,

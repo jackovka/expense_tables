@@ -7,6 +7,7 @@ import (
 	"strings"
 	"testing"
 
+	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
 )
@@ -182,7 +183,7 @@ func TestNewLogger(t *testing.T) {
 			} else if tt.cfg.LogFileEnable && !tt.cfg.LogStdoutEnable {
 				expect = strings.Split(fmt.Sprint(li.new(li.newTee(tt.logFile))), " ")
 			} else if !tt.cfg.LogFileEnable && !tt.cfg.LogStdoutEnable {
-				expect = strings.Split(fmt.Sprint(nil), " ")
+				expect = strings.Split(fmt.Sprint(zap.NewNop()), " ")
 			} else {
 				expect = strings.Split(fmt.Sprint(li.new(li.newTee(li.loggers(&tt.cfg, tt.logStdout,
 					tt.logFile)...), li.zapOpts()...)), " ")

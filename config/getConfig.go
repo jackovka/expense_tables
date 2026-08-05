@@ -15,6 +15,7 @@ func GetConfig() (*Config, error) {
 	if err != nil {
 		return nil, fmt.Errorf("%v", err)
 	}
+	defer congifFile.Close()
 
 	r, err := io.ReadAll(congifFile)
 	if err != nil {

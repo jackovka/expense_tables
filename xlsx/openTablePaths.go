@@ -21,6 +21,7 @@ func OpenTablePaths(path1, path2 string, log *zap.Logger) (*excelize.File, *exce
 	f2, err := excelize.OpenFile(path2)
 	if err != nil {
 		log.Error(err.Error())
+		_ = f1.Close()
 		return nil, nil, fmt.Errorf("cannot open %s with error: %v", path2, err)
 	}
 

@@ -64,7 +64,7 @@ func (l *logger) initLogger(cfg *config.Config) *zap.Logger {
 	textEncoder := li.newConsoleEncoder(conf)
 
 	if !cfg.LogFileEnable && !cfg.LogStdoutEnable {
-		return nil
+		return zap.NewNop()
 	}
 
 	var fileLogger zapcore.Core
